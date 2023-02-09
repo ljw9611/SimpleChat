@@ -1,3 +1,5 @@
+using SignalRChat.Hubs;
+
 namespace SimpleChat
 {
     public class Program
@@ -8,6 +10,7 @@ namespace SimpleChat
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSignalR(); //
 
             var app = builder.Build();
 
@@ -27,6 +30,7 @@ namespace SimpleChat
             app.UseAuthorization();
 
             app.MapRazorPages();
+            app.MapHub<ChatHub>("/chatHub"); //
 
             app.Run();
         }
